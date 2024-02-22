@@ -1,0 +1,14 @@
+FROM node:20.10.0
+
+RUN apt update
+
+ARG USER=docker-build
+ARG UID=1000
+ARG GID=1000
+
+RUN echo UID:GID = ${UID}:${GID}
+
+USER ${UID}:${GID}
+
+RUN export NODE_OPTIONS=--openssl-legacy-provider
+WORKDIR /app
